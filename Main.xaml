@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ugade="clr-namespace:UiPath.GSuite.Activities.Drive.Enums;assembly=UiPath.GSuite.Activities" xmlns:ugae="clr-namespace:UiPath.GSuite.Activities.Enums;assembly=UiPath.GSuite.Activities" xmlns:ugam="clr-namespace:UiPath.GSuite.Activities.Models;assembly=UiPath.GSuite.Activities" xmlns:ugdm="clr-namespace:UiPath.GSuite.Drive.Models;assembly=UiPath.GSuite" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.GSuite.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:p="http://schemas.uipath.com/workflow/activities/ocr" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ugade="clr-namespace:UiPath.GSuite.Activities.Drive.Enums;assembly=UiPath.GSuite.Activities" xmlns:ugadf="clr-namespace:UiPath.GSuite.Activities.Drive.Filters;assembly=UiPath.GSuite.Activities" xmlns:ugae="clr-namespace:UiPath.GSuite.Activities.Enums;assembly=UiPath.GSuite.Activities" xmlns:ugam="clr-namespace:UiPath.GSuite.Activities.Models;assembly=UiPath.GSuite.Activities" xmlns:ugdm="clr-namespace:UiPath.GSuite.Drive.Models;assembly=UiPath.GSuite" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:upap="clr-namespace:UiPath.PDF.Activities.PDF;assembly=UiPath.PDF.Activities" xmlns:upr="clr-namespace:UiPath.Platform.ResourceHandling;assembly=UiPath.Platform" xmlns:usau="clr-namespace:UiPath.Shared.Activities.Utils;assembly=UiPath.GSuite.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -41,6 +41,14 @@
       <x:String>System.Linq.Expressions</x:String>
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>UiPath.GSuite</x:String>
+      <x:String>UiPath.PDF</x:String>
+      <x:String>UiPath.PDF.Activities.PDF</x:String>
+      <x:String>UiPath.PDF.Activities</x:String>
+      <x:String>UiPath.Vision.OCR</x:String>
+      <x:String>UiPath.OCR.Contracts</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.OCR.Activities</x:String>
+      <x:String>UiPath.OCR.Contracts.Activities</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -96,85 +104,191 @@
       <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
       <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>UiPath.PDF</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="850,449.6566666666666" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="684,1012.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uga:ForEachFileFolderConnections ConnectionAccountName="{x:Null}" ExistingLocation="{x:Null}" Filter="{x:Null}" FolderIdBackup="{x:Null}" Length="{x:Null}" ManualEntryLocation="{x:Null}" QueryFilter="{x:Null}" AllLabels="W10=" AuthScopesInvalid="False" BrowserLocation="https://drive.google.com/drive/folders/14Co5JsOFUH3YPKvKn4-XZq4M7NsjyHe1" ConnectionId="1b7535b8-974d-4be6-97af-c121ebd3f08c" CurrentItemVariableName="CurrentItem" DisplayName="For Each File or Folder" FilterSelectionMode="ConditionBuilder" sap:VirtualizedContainerService.HintSize="452,422.6666666666667" sap2010:WorkflowViewState.IdRef="ForEachFileFolderConnections_1" LocationFriendlyName="ScannedReceipts" LocationInputMode="Browse" MaxResults="200" StarredOnly="False" UseConnectionService="True" WhatToReturn="FilesAndFolders">
-      <uga:ForEachFileFolderConnections.Body>
-        <ActivityAction x:TypeArguments="ugdm:GDriveRemoteItem, x:Int32">
+    <ui:LogMessage DisplayName="Log Message Start To Link Google Drive" sap:VirtualizedContainerService.HintSize="684,57.333333333333336" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Connecting to Google Drive...&quot;]">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:LogMessage>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="684,57.333333333333336" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="650,108" sap2010:WorkflowViewState.IdRef="Sequence_5">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <uga:ForEachFileFolderConnections ConnectionAccountName="{x:Null}" ExistingLocation="{x:Null}" FolderIdBackup="{x:Null}" Length="{x:Null}" ManualEntryLocation="{x:Null}" MaxResults="{x:Null}" QueryFilter="{x:Null}" AllLabels="W10=" AuthScopesInvalid="False" BrowserLocation="https://drive.google.com/drive/folders/1-F_Jm8akuSZDlaoaXYVnPW0-QevSOxEI" ConnectionId="1b7535b8-974d-4be6-97af-c121ebd3f08c" CurrentItemVariableName="CurrentItem" DisplayName="For Each File or Folder From My Google Drive" FilterSelectionMode="ConditionBuilder" sap:VirtualizedContainerService.HintSize="616,48" sap2010:WorkflowViewState.IdRef="ForEachFileFolderConnections_1" LocationFriendlyName="ScannedReceipts" LocationInputMode="Browse" StarredOnly="False" UseConnectionService="True" WhatToReturn="[UiPath.GSuite.Activities.Drive.Enums.LocationType.Files]">
+            <uga:ForEachFileFolderConnections.Body>
+              <ActivityAction x:TypeArguments="ugdm:GDriveRemoteItem, x:Int32">
+                <ActivityAction.Argument1>
+                  <DelegateInArgument x:TypeArguments="ugdm:GDriveRemoteItem" Name="CurrentItem" />
+                </ActivityAction.Argument1>
+                <ActivityAction.Argument2>
+                  <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentItemIndex" />
+                </ActivityAction.Argument2>
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,458.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message Current File Name" sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Downloading File: &quot; +CurrentItem.FullName]" />
+                  <uga:DownloadFileConnections BrowserFileId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" File="{x:Null}" FileFriendlyName="{x:Null}" ManualEntryFileId="{x:Null}" NewResult="{x:Null}" Result="{x:Null}" sap2010:Annotation.AnnotationText="If  files are already exists in the folder it will replaced." AuthScopesInvalid="False" ConflictResolution="Replace" ConnectionId="1b7535b8-974d-4be6-97af-c121ebd3f08c" DestinationPath="[&quot;C:\Users\shaik\OneDrive\Documents\UiPath\UiPath projects\Robot 4 Scanned Receipts OCR\ScannedReceipts\&quot;+CurrentItem.FullName]" DisplayName="Download Current File" DownloadDocumentAs="Word" DownloadDrawingAs="Jpeg" DownloadPresentationAs="Ppt" DownloadSpreadsheetAs="Xlsx" FileInputMode="UrlOrId" sap:VirtualizedContainerService.HintSize="416,222" sap2010:WorkflowViewState.IdRef="DownloadFileConnections_2" ManualFileId="[CurrentItem.ID]" UseConnectionService="True">
+                    <uga:DownloadFileConnections.FileIdBackup>
+                      <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID0" StoredValue="UrlOrId">
+                        <usau:BackupSlot.BackupValues>
+                          <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="3">
+                            <x:Null />
+                            <x:Null />
+                            <x:Null />
+                          </scg:List>
+                        </usau:BackupSlot.BackupValues>
+                      </usau:BackupSlot>
+                    </uga:DownloadFileConnections.FileIdBackup>
+                    <uga:DownloadFileConnections.Item>
+                      <ugam:DriveItemArgument Backup="{x:Reference __ReferenceID0}" BrowserId="{x:Null}" ConnectionDescriptor="{x:Null}" ConnectionKey="{x:Null}" DriveId="{x:Null}" Existing="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" IdOrUrl="[CurrentItem.ID]" InputMode="UrlOrId">
+                        <ugam:DriveItemArgument.FullPathHint>
+                          <InArgument x:TypeArguments="x:String">
+                            <Literal x:TypeArguments="x:String" Value="" />
+                          </InArgument>
+                        </ugam:DriveItemArgument.FullPathHint>
+                        <ugam:DriveItemArgument.ParentIdFullPathHint>
+                          <InArgument x:TypeArguments="x:String">
+                            <Literal x:TypeArguments="x:String" Value="" />
+                          </InArgument>
+                        </ugam:DriveItemArgument.ParentIdFullPathHint>
+                      </ugam:DriveItemArgument>
+                    </uga:DownloadFileConnections.Item>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </uga:DownloadFileConnections>
+                </Sequence>
+              </ActivityAction>
+            </uga:ForEachFileFolderConnections.Body>
+            <uga:ForEachFileFolderConnections.Filter>
+              <ugadf:FileFilterArgument LogicalOperator="And">
+                <ugadf:FileFilterArgument.Filters>
+                  <ugadf:SingleFileFilterArgument DateValue="{x:Null}" Value="{x:Null}" Values="{x:Null}" Criteria="Type" DateOperator="NewerThan" FileType="PDF" OwnerOperator="In" StringOperator="Contains" TextOperator="Contains" TypeOperator="Equals" />
+                </ugadf:FileFilterArgument.Filters>
+              </ugadf:FileFilterArgument>
+            </uga:ForEachFileFolderConnections.Filter>
+            <uga:ForEachFileFolderConnections.FilterSelectionBackup>
+              <usau:BackupSlot x:TypeArguments="ugae:FilterMode" StoredValue="ConditionBuilder">
+                <usau:BackupSlot.BackupValues>
+                  <scg:List x:TypeArguments="x:Object" x:Key="ConditionBuilder" Capacity="1">
+                    <x:Null />
+                  </scg:List>
+                  <scg:List x:TypeArguments="x:Object" x:Key="Query" Capacity="1">
+                    <x:Null />
+                  </scg:List>
+                </usau:BackupSlot.BackupValues>
+              </usau:BackupSlot>
+            </uga:ForEachFileFolderConnections.FilterSelectionBackup>
+            <uga:ForEachFileFolderConnections.Item>
+              <ugam:DriveItemArgument ConnectionDescriptor="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://drive.google.com/drive/folders/1-F_Jm8akuSZDlaoaXYVnPW0-QevSOxEI" ConnectionKey="1b7535b8-974d-4be6-97af-c121ebd3f08c" FriendlyName="ScannedReceipts" FullPathHint="My Drive/ScannedReceipts" InputMode="Browse">
+                <ugam:DriveItemArgument.Backup>
+                  <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" StoredValue="Browse">
+                    <usau:BackupSlot.BackupValues>
+                      <scg:Dictionary x:TypeArguments="ugade:EDriveItemMode, scg:List(x:Object)" />
+                    </usau:BackupSlot.BackupValues>
+                  </usau:BackupSlot>
+                </ugam:DriveItemArgument.Backup>
+                <ugam:DriveItemArgument.DriveId>
+                  <InArgument x:TypeArguments="x:String" />
+                </ugam:DriveItemArgument.DriveId>
+                <ugam:DriveItemArgument.ParentIdFullPathHint>
+                  <InArgument x:TypeArguments="x:String">
+                    <Literal x:TypeArguments="x:String" Value="" />
+                  </InArgument>
+                </ugam:DriveItemArgument.ParentIdFullPathHint>
+              </ugam:DriveItemArgument>
+            </uga:ForEachFileFolderConnections.Item>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </uga:ForEachFileFolderConnections>
+        </Sequence>
+      </ui:CommentOut.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:CommentOut>
+    <ui:ForEachFileX DisplayName="For Each File in 'ScannedReceipts' Folder From My Project" Filter="*.pdf" Folder="ScannedReceipts" sap:VirtualizedContainerService.HintSize="684,875.3333333333334" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="CreationDateOldFirst" SkipFolderWithoutPermission="True">
+      <ui:ForEachFileX.Body>
+        <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
           <ActivityAction.Argument1>
-            <DelegateInArgument x:TypeArguments="ugdm:GDriveRemoteItem" Name="CurrentItem" />
+            <DelegateInArgument x:TypeArguments="si:FileInfo" Name="CurrentFile" />
           </ActivityAction.Argument1>
           <ActivityAction.Argument2>
-            <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentItemIndex" />
+            <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
           </ActivityAction.Argument2>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,237.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="650,583.3333333333334" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="ExtractedReceiptText" />
+            </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uga:DownloadFileConnections BrowserFileId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" DestinationPath="{x:Null}" File="{x:Null}" FileFriendlyName="{x:Null}" ManualEntryFileId="{x:Null}" NewResult="{x:Null}" Result="{x:Null}" AuthScopesInvalid="False" ConflictResolution="Fail" ConnectionId="1b7535b8-974d-4be6-97af-c121ebd3f08c" DisplayName="Download File" DownloadDocumentAs="Word" DownloadDrawingAs="Jpeg" DownloadPresentationAs="Ppt" DownloadSpreadsheetAs="Xlsx" FileInputMode="UrlOrId" sap:VirtualizedContainerService.HintSize="416,177.33333333333334" sap2010:WorkflowViewState.IdRef="DownloadFileConnections_1" ManualFileId="[CurrentItem.ID]" UseConnectionService="True">
-              <uga:DownloadFileConnections.FileIdBackup>
-                <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID0" StoredValue="UrlOrId">
-                  <usau:BackupSlot.BackupValues>
-                    <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="3">
-                      <x:Null />
-                      <x:Null />
-                      <x:Null />
-                    </scg:List>
-                  </usau:BackupSlot.BackupValues>
-                </usau:BackupSlot>
-              </uga:DownloadFileConnections.FileIdBackup>
-              <uga:DownloadFileConnections.Item>
-                <ugam:DriveItemArgument Backup="{x:Reference __ReferenceID0}" BrowserId="{x:Null}" ConnectionDescriptor="{x:Null}" ConnectionKey="{x:Null}" DriveId="{x:Null}" Existing="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" IdOrUrl="[CurrentItem.ID]" InputMode="UrlOrId">
-                  <ugam:DriveItemArgument.FullPathHint>
-                    <InArgument x:TypeArguments="x:String">
-                      <Literal x:TypeArguments="x:String" Value="" />
-                    </InArgument>
-                  </ugam:DriveItemArgument.FullPathHint>
-                  <ugam:DriveItemArgument.ParentIdFullPathHint>
-                    <InArgument x:TypeArguments="x:String">
-                      <Literal x:TypeArguments="x:String" Value="" />
-                    </InArgument>
-                  </ugam:DriveItemArgument.ParentIdFullPathHint>
-                </ugam:DriveItemArgument>
-              </uga:DownloadFileConnections.Item>
-            </uga:DownloadFileConnections>
+            <WriteLine DisplayName="Write Line Current File" sap:VirtualizedContainerService.HintSize="616,124" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;Processing: &quot; +CurrentFile.Name]" />
+            <ui:ReadPDFWithOCR ResourceFile="{x:Null}" DegreeOfParallelism="-1" DisplayName="Read PDF with OCR" FileName="[CurrentFile.FullName]" sap:VirtualizedContainerService.HintSize="616,227.33333333333334" sap2010:WorkflowViewState.IdRef="ReadPDFWithOCR_2" ImageDpi="150" Range="All" Text="[ExtractedReceiptText]">
+              <ui:ReadPDFWithOCR.Item>
+                <upap:ItemArgument x:TypeArguments="upr:IResource" ResourceFile="{x:Null}" FileName="[CurrentFile.FullName]" />
+              </ui:ReadPDFWithOCR.Item>
+              <ui:ReadPDFWithOCR.OCREngine>
+                <ActivityFunc x:TypeArguments="sd:Image, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
+                  <ActivityFunc.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+                  </ActivityFunc.Argument>
+                  <p:UiPathDocumentOCR Output="{x:Null}" PredictionId="{x:Null}" Text="{x:Null}" ApiKey="rT1yNccoW6yy3LheGOqSzaAAmLBKgLxgOtoqmzUuTjvA/USlTjg0rQGHtb7+i8pmw/+jhAABdMSth3oFdEkbqQ==" ComputeSkewAngle="False" DisplayName="UiPath Document OCR" Endpoint="https://du.uipath.com/ocr" ExtractWords="True" sap:VirtualizedContainerService.HintSize="334,25.333333333333332" sap2010:WorkflowViewState.IdRef="UiPathDocumentOCR_1" Image="[Image]" Language="auto" NoopExecution="False" Profile="None" Scale="1" Timeout="100000" UseLocalServer="False" UseSeparateOcrProcess="True" />
+                </ActivityFunc>
+              </ui:ReadPDFWithOCR.OCREngine>
+            </ui:ReadPDFWithOCR>
+            <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="616,124" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[ExtractedReceiptText]" />
+            <ui:Break sap:VirtualizedContainerService.HintSize="616,48" sap2010:WorkflowViewState.IdRef="Break_1" />
           </Sequence>
         </ActivityAction>
-      </uga:ForEachFileFolderConnections.Body>
-      <uga:ForEachFileFolderConnections.FilterSelectionBackup>
-        <usau:BackupSlot x:TypeArguments="ugae:FilterMode" StoredValue="ConditionBuilder">
-          <usau:BackupSlot.BackupValues>
-            <scg:Dictionary x:TypeArguments="ugae:FilterMode, scg:List(x:Object)" />
-          </usau:BackupSlot.BackupValues>
-        </usau:BackupSlot>
-      </uga:ForEachFileFolderConnections.FilterSelectionBackup>
-      <uga:ForEachFileFolderConnections.Item>
-        <ugam:DriveItemArgument ConnectionDescriptor="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://drive.google.com/drive/folders/14Co5JsOFUH3YPKvKn4-XZq4M7NsjyHe1" ConnectionKey="1b7535b8-974d-4be6-97af-c121ebd3f08c" FriendlyName="ScannedReceipts" FullPathHint="ScannedReceipts" InputMode="Browse">
-          <ugam:DriveItemArgument.Backup>
-            <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" StoredValue="Browse">
-              <usau:BackupSlot.BackupValues>
-                <scg:Dictionary x:TypeArguments="ugade:EDriveItemMode, scg:List(x:Object)" />
-              </usau:BackupSlot.BackupValues>
-            </usau:BackupSlot>
-          </ugam:DriveItemArgument.Backup>
-          <ugam:DriveItemArgument.DriveId>
-            <InArgument x:TypeArguments="x:String" />
-          </ugam:DriveItemArgument.DriveId>
-          <ugam:DriveItemArgument.ParentIdFullPathHint>
-            <InArgument x:TypeArguments="x:String">
-              <Literal x:TypeArguments="x:String" Value="" />
-            </InArgument>
-          </ugam:DriveItemArgument.ParentIdFullPathHint>
-        </ugam:DriveItemArgument>
-      </uga:ForEachFileFolderConnections.Item>
-    </uga:ForEachFileFolderConnections>
+      </ui:ForEachFileX.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:ForEachFileX>
   </Sequence>
 </Activity>
