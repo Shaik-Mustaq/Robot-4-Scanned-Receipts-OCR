@@ -1,5 +1,12 @@
 {
-  "Tags": [],
+  "Tags": [
+    {
+      "Key": "Scan"
+    },
+    {
+      "Key": "OCR"
+    }
+  ],
   "SeparateRuntimeDependencies": true,
   "IncludeSources": true,
   "ConnectorKeys": []
