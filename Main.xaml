@@ -138,7 +138,7 @@
       <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
     </scg:Dictionary>
   </sap:WorkflowViewStateService.ViewState>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="844,1640" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="520,6946" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="[&quot;MyOutput &quot; + Now.ToString(&quot;yyyy-MM-dd&quot;) +&quot;.txt&quot;]" Name="FileName" />
       <Variable x:TypeArguments="x:Decimal" Default="0" Name="TotDecimalSaleAmt" />
@@ -148,13 +148,14 @@
           <Literal x:TypeArguments="x:String" Value="" />
         </Variable.Default>
       </Variable>
+      <Variable x:TypeArguments="x:Int32" Name="Length" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message Start To Link Google Drive" sap:VirtualizedContainerService.HintSize="488,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Connecting to Google Drive...&quot;]">
+    <ui:LogMessage DisplayName="Log Message Start To Link Google Drive" sap:VirtualizedContainerService.HintSize="520,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Connecting to Google Drive...&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -162,15 +163,15 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="488,1440.6666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="520,6746.666666666667" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="486,990.6666666666666" sap2010:WorkflowViewState.IdRef="Sequence_14">
+        <Sequence DisplayName="Try" sap:VirtualizedContainerService.HintSize="518,6264" sap2010:WorkflowViewState.IdRef="Sequence_14">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <uga:ForEachFileFolderConnections ConnectionAccountName="{x:Null}" ExistingLocation="{x:Null}" FolderIdBackup="{x:Null}" Length="{x:Null}" ManualEntryLocation="{x:Null}" MaxResults="{x:Null}" QueryFilter="{x:Null}" AllLabels="W10=" AuthScopesInvalid="False" BrowserLocation="https://drive.google.com/drive/folders/1-F_Jm8akuSZDlaoaXYVnPW0-QevSOxEI" ConnectionId="9dde4bb1-962b-49e6-94e5-2836503cebac" CurrentItemVariableName="CurrentItem" DisplayName="For Each File or Folder From My Google Drive" FilterSelectionMode="ConditionBuilder" sap:VirtualizedContainerService.HintSize="452,653.3333333333334" sap2010:WorkflowViewState.IdRef="ForEachFileFolderConnections_2" LocationFriendlyName="ScannedReceipts" LocationInputMode="Browse" StarredOnly="False" UseConnectionService="True" WhatToReturn="[UiPath.GSuite.Activities.Drive.Enums.LocationType.Files]">
+          <uga:ForEachFileFolderConnections ConnectionAccountName="{x:Null}" ExistingLocation="{x:Null}" FolderIdBackup="{x:Null}" ManualEntryLocation="{x:Null}" MaxResults="{x:Null}" QueryFilter="{x:Null}" AllLabels="W10=" AuthScopesInvalid="False" BrowserLocation="https://drive.google.com/drive/folders/1-F_Jm8akuSZDlaoaXYVnPW0-QevSOxEI" ConnectionId="a3cc2dd0-a29a-418c-a19f-735ba064cf60" CurrentItemVariableName="CurrentItem" DisplayName="For Each File or Folder From My Google Drive" FilterSelectionMode="ConditionBuilder" sap:VirtualizedContainerService.HintSize="484,653.3333333333334" sap2010:WorkflowViewState.IdRef="ForEachFileFolderConnections_2" Length="[Length]" LocationFriendlyName="ScannedReceipts" LocationInputMode="Browse" StarredOnly="False" UseConnectionService="True" WhatToReturn="[UiPath.GSuite.Activities.Drive.Enums.LocationType.Files]">
             <uga:ForEachFileFolderConnections.Body>
               <ActivityAction x:TypeArguments="ugdm:GDriveRemoteItem, x:Int32">
                 <ActivityAction.Argument1>
@@ -185,26 +186,24 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message Current File Name" sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Downloading File: &quot; +CurrentItem.FullName]" />
-                  <uga:DownloadFileConnections BrowserFileId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" File="{x:Null}" FileFriendlyName="{x:Null}" ManualEntryFileId="{x:Null}" NewResult="{x:Null}" Result="{x:Null}" sap2010:Annotation.AnnotationText="If  files are already exists in the folder it will replaced." AuthScopesInvalid="False" ConflictResolution="Replace" ConnectionId="9dde4bb1-962b-49e6-94e5-2836503cebac" DestinationPath="[&quot;C:\Users\shaik\OneDrive\Documents\UiPath\UiPath projects\Robot 4 Scanned Receipts OCR\ScannedReceipts\&quot;+CurrentItem.FullName]" DisplayName="Download Current File" DownloadDocumentAs="Word" DownloadDrawingAs="Jpeg" DownloadPresentationAs="Ppt" DownloadSpreadsheetAs="Xlsx" FileInputMode="UrlOrId" sap:VirtualizedContainerService.HintSize="416,222" sap2010:WorkflowViewState.IdRef="DownloadFileConnections_2" ManualFileId="[CurrentItem.ID]" UseConnectionService="True">
+                  <ui:LogMessage DisplayName="Log Message Current File Name" sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Downloading File: &quot; +CurrentItem.FullName + &quot; | &quot; +&quot;Number of files processed: &quot; +Length.ToString]" />
+                  <uga:DownloadFileConnections BrowserFileId="{x:Null}" ConnectionAccountName="{x:Null}" ContinueOnError="{x:Null}" File="{x:Null}" FileFriendlyName="{x:Null}" ManualEntryFileId="{x:Null}" NewResult="{x:Null}" Result="{x:Null}" sap2010:Annotation.AnnotationText="If  files are already exists in the folder it will replaced." AuthScopesInvalid="False" ConflictResolution="Replace" ConnectionId="a3cc2dd0-a29a-418c-a19f-735ba064cf60" DestinationPath="[&quot;C:\Users\SMUSTAQ\studio\Demo\Robot 4 Scanned Receipts OCR\ScannedReceipts\&quot;+CurrentItem.FullName]" DisplayName="Download Current File" DownloadDocumentAs="Word" DownloadDrawingAs="Jpeg" DownloadPresentationAs="Ppt" DownloadSpreadsheetAs="Xlsx" FileInputMode="UrlOrId" sap:VirtualizedContainerService.HintSize="416,222" sap2010:WorkflowViewState.IdRef="DownloadFileConnections_2" ManualFileId="[CurrentItem.ID]" UseConnectionService="True">
                     <uga:DownloadFileConnections.FileIdBackup>
                       <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" x:Name="__ReferenceID0" StoredValue="UrlOrId">
                         <usau:BackupSlot.BackupValues>
                           <scg:List x:TypeArguments="x:Object" x:Key="Browse" Capacity="3">
-                            <x:Null />
-                            <x:Null />
-                            <x:Null />
+                            <InArgument x:TypeArguments="x:String" />
+                            <InArgument x:TypeArguments="x:String" />
+                            <InArgument x:TypeArguments="x:String" />
+                          </scg:List>
+                          <scg:List x:TypeArguments="x:Object" x:Key="UrlOrId" Capacity="1">
+                            <InArgument x:TypeArguments="x:String">[CurrentItem.ID]</InArgument>
                           </scg:List>
                         </usau:BackupSlot.BackupValues>
                       </usau:BackupSlot>
                     </uga:DownloadFileConnections.FileIdBackup>
                     <uga:DownloadFileConnections.Item>
-                      <ugam:DriveItemArgument Backup="{x:Reference __ReferenceID0}" BrowserId="{x:Null}" ConnectionDescriptor="{x:Null}" ConnectionKey="{x:Null}" DriveId="{x:Null}" Existing="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" IdOrUrl="[CurrentItem.ID]" InputMode="UrlOrId">
-                        <ugam:DriveItemArgument.FullPathHint>
-                          <InArgument x:TypeArguments="x:String">
-                            <Literal x:TypeArguments="x:String" Value="" />
-                          </InArgument>
-                        </ugam:DriveItemArgument.FullPathHint>
+                      <ugam:DriveItemArgument Backup="{x:Reference __ReferenceID0}" BrowserId="{x:Null}" ConnectionDescriptor="{x:Null}" DriveId="{x:Null}" Existing="{x:Null}" FriendlyName="{x:Null}" FullPath="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" ConnectionKey="a3cc2dd0-a29a-418c-a19f-735ba064cf60" FullPathHint="[Nothing]" IdOrUrl="[CurrentItem.ID]" InputMode="UrlOrId">
                         <ugam:DriveItemArgument.ParentIdFullPathHint>
                           <InArgument x:TypeArguments="x:String">
                             <Literal x:TypeArguments="x:String" Value="" />
@@ -241,7 +240,7 @@
               </usau:BackupSlot>
             </uga:ForEachFileFolderConnections.FilterSelectionBackup>
             <uga:ForEachFileFolderConnections.Item>
-              <ugam:DriveItemArgument ConnectionDescriptor="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://drive.google.com/drive/folders/1-F_Jm8akuSZDlaoaXYVnPW0-QevSOxEI" ConnectionKey="1b7535b8-974d-4be6-97af-c121ebd3f08c" FriendlyName="ScannedReceipts" FullPathHint="My Drive/ScannedReceipts" InputMode="Browse">
+              <ugam:DriveItemArgument ConnectionDescriptor="{x:Null}" Existing="{x:Null}" FullPath="{x:Null}" IdOrUrl="{x:Null}" ParentId="{x:Null}" ParentIdFriendlyName="{x:Null}" RelativePath="{x:Null}" BrowserId="https://drive.google.com/drive/folders/1-F_Jm8akuSZDlaoaXYVnPW0-QevSOxEI" ConnectionKey="a3cc2dd0-a29a-418c-a19f-735ba064cf60" FriendlyName="ScannedReceipts" FullPathHint="My Drive/ScannedReceipts" InputMode="Browse">
                 <ugam:DriveItemArgument.Backup>
                   <usau:BackupSlot x:TypeArguments="ugade:EDriveItemMode" StoredValue="Browse">
                     <usau:BackupSlot.BackupValues>
@@ -266,7 +265,15 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </uga:ForEachFileFolderConnections>
-          <ui:LogMessage DisplayName="Log Message Download Completion" sap:VirtualizedContainerService.HintSize="452,57.333333333333336" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;Downloaded All Files And Stored Inside 'ScannedReceipts' Folder!&quot;]">
+          <ui:LogMessage DisplayName="Log Message Download Completion" sap:VirtualizedContainerService.HintSize="484,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_12" Level="Info" Message="[&quot;Downloaded All Files And Stored Inside 'ScannedReceipts' Folder!&quot;]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:LogMessage>
+          <ui:LogMessage DisplayName="Log Message Started Processing" sap:VirtualizedContainerService.HintSize="484,57.333333333333336" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;Started Processing For Each PDF File......&quot;]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -274,15 +281,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:LogMessage>
-          <ui:LogMessage DisplayName="Log Message Started Processing" sap:VirtualizedContainerService.HintSize="452,57.333333333333336" sap2010:WorkflowViewState.IdRef="LogMessage_13" Level="Info" Message="[&quot;Started Processing For Each PDF File......&quot;]">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-          </ui:LogMessage>
-          <ui:ForEachFileX DisplayName="For Each File in 'ScannedReceipts' Folder From My Project" Filter="*.pdf" Folder="ScannedReceipts" sap:VirtualizedContainerService.HintSize="452,57.333333333333336" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="CreationDateOldFirst" SkipFolderWithoutPermission="True">
+          <ui:ForEachFileX DisplayName="For Each File in 'ScannedReceipts' Folder From My Project" Filter="*.pdf" Folder="ScannedReceipts" sap:VirtualizedContainerService.HintSize="484,5211.333333333333" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="CreationDateOldFirst" SkipFolderWithoutPermission="True">
             <ui:ForEachFileX.Body>
               <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
                 <ActivityAction.Argument1>
@@ -291,7 +290,7 @@
                 <ActivityAction.Argument2>
                   <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
                 </ActivityAction.Argument2>
-                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="650,4910" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,4910" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="x:String" Name="ExtractedReceiptText" />
                     <Variable x:TypeArguments="x:String" Name="ReceiptID" />
@@ -312,7 +311,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <WriteLine DisplayName="Write Line Current File" sap:VirtualizedContainerService.HintSize="616,124" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;Processing: &quot; +CurrentFile.Name]">
+                  <WriteLine DisplayName="Write Line Current File" sap:VirtualizedContainerService.HintSize="416,124" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[&quot;Processing: &quot; +CurrentFile.Name]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -320,7 +319,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </WriteLine>
-                  <ui:ReadPDFWithOCR ResourceFile="{x:Null}" DegreeOfParallelism="-1" DisplayName="Read Receipt PDF with OCR" FileName="[CurrentFile.FullName]" sap:VirtualizedContainerService.HintSize="616,227.33333333333334" sap2010:WorkflowViewState.IdRef="ReadPDFWithOCR_2" ImageDpi="150" Range="All" Text="[ExtractedReceiptText]">
+                  <ui:ReadPDFWithOCR ResourceFile="{x:Null}" DegreeOfParallelism="-1" DisplayName="Read Receipt PDF with OCR" FileName="[CurrentFile.FullName]" sap:VirtualizedContainerService.HintSize="416,227.33333333333334" sap2010:WorkflowViewState.IdRef="ReadPDFWithOCR_2" ImageDpi="150" Range="All" Text="[ExtractedReceiptText]">
                     <ui:ReadPDFWithOCR.Item>
                       <upap:ItemArgument x:TypeArguments="upr:IResource" ResourceFile="{x:Null}" FileName="[CurrentFile.FullName]" />
                     </ui:ReadPDFWithOCR.Item>
@@ -329,7 +328,7 @@
                         <ActivityFunc.Argument>
                           <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
                         </ActivityFunc.Argument>
-                        <p:UiPathDocumentOCR ImageFile="{x:Null}" Output="{x:Null}" PredictionId="{x:Null}" Text="{x:Null}" ApiKey="T6RcAHtMKXQaaqeOpZx5dlbh45AZfuwjdzFcftSt0pDiSe0nZuP2BINHVRQfh2p2Nw4hsZb75VkLNlcsd0qIDQ==" ComputeSkewAngle="False" DisplayName="UiPath Document OCR" Endpoint="https://du.uipath.com/ocr" ExtractWords="True" sap:VirtualizedContainerService.HintSize="334,25.333333333333332" sap2010:WorkflowViewState.IdRef="UiPathDocumentOCR_1" Image="[Image]" Language="auto" NoopExecution="False" Profile="None" Scale="1" Timeout="100000" UseLocalServer="False" UseSeparateOcrProcess="True">
+                        <p:UiPathDocumentOCR ImageFile="{x:Null}" Output="{x:Null}" PredictionId="{x:Null}" Text="{x:Null}" ApiKey="fjllJFGhJKuQfBB1YmKS3X6LDIjFxNNV9fNJuHobrXXyip2W4M+S67qXV4S1wzDvd+9KGKE3NucghonYkAaxTg==" ComputeSkewAngle="False" DisplayName="UiPath Document OCR" Endpoint="https://du.uipath.com/ocr" ExtractWords="True" sap:VirtualizedContainerService.HintSize="334,25.333333333333332" sap2010:WorkflowViewState.IdRef="UiPathDocumentOCR_1" Image="[Image]" Language="auto" NoopExecution="False" Profile="None" Scale="1" Timeout="100000" UseLocalServer="False" UseSeparateOcrProcess="True">
                           <p:UiPathDocumentOCR.Source>
                             <p:OcrImageInput ImageFile="{x:Null}" Image="[Image]" />
                           </p:UiPathDocumentOCR.Source>
@@ -349,8 +348,8 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:ReadPDFWithOCR>
-                  <ui:LogMessage DisplayName="Log Message Completion Read PDF" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Info" Message="[&quot;Completed: Read Receipt PDF with OCR.&quot;]" />
-                  <WriteLine DisplayName="Write Line Extracted Text" sap:VirtualizedContainerService.HintSize="616,124" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[&quot;Extracted Receipt Text --- &quot; +ExtractedReceiptText]">
+                  <ui:LogMessage DisplayName="Log Message Completion Read PDF" sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_14" Level="Info" Message="[&quot;Completed: Read Receipt PDF with OCR.&quot;]" />
+                  <WriteLine DisplayName="Write Line Extracted Text" sap:VirtualizedContainerService.HintSize="416,124" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[&quot;Extracted Receipt Text --- &quot; +ExtractedReceiptText]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -358,7 +357,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </WriteLine>
-                  <ui:Matches BuilderPattern="(\d{8})" DisplayName="Find Matching Patterns Receipt &amp; Trx ID" FirstMatch="[ReceiptID]" sap:VirtualizedContainerService.HintSize="616,92" sap2010:WorkflowViewState.IdRef="Matches_2" Input="[ExtractedReceiptText]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;DIG&quot;,&quot;OperationName&quot;:&quot;Digit&quot;,&quot;OperationValue&quot;:&quot;\\d&quot;,&quot;QuantifierFirstValue&quot;:&quot;8&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="(\d{8})" RegexOption="IgnoreCase, Compiled" Result="[EightDigitMatches]">
+                  <ui:Matches BuilderPattern="(\d{8})" DisplayName="Find Matching Patterns Receipt &amp; Trx ID" FirstMatch="[ReceiptID]" sap:VirtualizedContainerService.HintSize="416,92" sap2010:WorkflowViewState.IdRef="Matches_2" Input="[ExtractedReceiptText]" IsBuilderTabModified="True" Model="[{&quot;Index&quot;:0,&quot;OperationID&quot;:&quot;DIG&quot;,&quot;OperationName&quot;:&quot;Digit&quot;,&quot;OperationValue&quot;:&quot;\\d&quot;,&quot;QuantifierFirstValue&quot;:&quot;8&quot;,&quot;QuantifierID&quot;:&quot;EXT&quot;,&quot;QuantifierName&quot;:&quot;Exactly&quot;,&quot;QuantifierSecondValue&quot;:null}]" Pattern="(\d{8})" RegexOption="IgnoreCase, Compiled" Result="[EightDigitMatches]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -366,7 +365,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:Matches>
-                  <ui:LogMessage DisplayName="Log Message only Receipt ID" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Receipt ID: &quot; + ReceiptID]">
+                  <ui:LogMessage DisplayName="Log Message only Receipt ID" sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Receipt ID: &quot; + ReceiptID]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -374,7 +373,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:LogMessage>
-                  <Assign sap2010:Annotation.AnnotationText="From the two 8 digit &#xA;matches, gives the 2nd match using index 1." DisplayName="Assign to get Trx ID" sap:VirtualizedContainerService.HintSize="616,221.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_9">
+                  <Assign sap2010:Annotation.AnnotationText="From the two 8 digit &#xA;matches, gives the 2nd match using index 1." DisplayName="Assign to get Trx ID" sap:VirtualizedContainerService.HintSize="416,221.33333333333334" sap2010:WorkflowViewState.IdRef="Assign_9">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[TrxID]</OutArgument>
                     </Assign.To>
@@ -389,7 +388,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </Assign>
-                  <ui:LogMessage DisplayName="Log Message only Trx ID" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Trx ID: &quot; +TrxID]">
+                  <ui:LogMessage DisplayName="Log Message only Trx ID" sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;Trx ID: &quot; +TrxID]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -507,7 +506,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </Assign>
-                  <Assign DisplayName="Assign to sum for total sale amount" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_4">
+                  <Assign DisplayName="Assign to sum for total sale amount" sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_4">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Decimal">[TotDecimalSaleAmt]</OutArgument>
                     </Assign.To>
@@ -537,7 +536,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:Matches>
-                  <ui:LogMessage DisplayName="Log Message Date" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Date: &quot; +DateText]">
+                  <ui:LogMessage DisplayName="Log Message Date" sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Date: &quot; +DateText]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -545,7 +544,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:LogMessage>
-                  <Assign DisplayName="Assign to format Date dd MMMM yyyy" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_6">
+                  <Assign DisplayName="Assign to format Date dd MMMM yyyy" sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_6">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[FormattedDate]</OutArgument>
                     </Assign.To>
@@ -559,7 +558,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </Assign>
-                  <ui:LogMessage DisplayName="Log Message formatted date" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Formatted Date: &quot; +FormattedDate]">
+                  <ui:LogMessage DisplayName="Log Message formatted date" sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Info" Message="[&quot;Formatted Date: &quot; +FormattedDate]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -567,7 +566,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </ui:LogMessage>
-                  <Assign DisplayName="Assign to track counter" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_5">
+                  <Assign DisplayName="Assign to track counter" sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_5">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Int32">[Counter]</OutArgument>
                     </Assign.To>
@@ -581,7 +580,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </Assign>
-                  <Assign DisplayName="Assign Each Output Line Format" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_7">
+                  <Assign DisplayName="Assign Each Output Line Format" sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_7">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[OutputLine]</OutArgument>
                     </Assign.To>
@@ -595,7 +594,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </Assign>
-                  <Assign DisplayName="Assign to sent all content to Output" sap:VirtualizedContainerService.HintSize="616,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_8">
+                  <Assign DisplayName="Assign to sent all content to Output" sap:VirtualizedContainerService.HintSize="416,176.66666666666666" sap2010:WorkflowViewState.IdRef="Assign_8">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[Output]</OutArgument>
                     </Assign.To>
@@ -609,7 +608,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </Assign>
-                  <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="Output" DisplayName="Move Scanned Receipts To Output Folder" sap:VirtualizedContainerService.HintSize="616,196.66666666666666" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[CurrentFile.FullName]">
+                  <ui:MoveFile ContinueOnError="{x:Null}" DestinationResource="{x:Null}" PathResource="{x:Null}" Destination="Output" DisplayName="Move Scanned Receipts To Output Folder" sap:VirtualizedContainerService.HintSize="416,196.66666666666666" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[CurrentFile.FullName]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -693,12 +692,12 @@
             </ui:ForEachFileX.Body>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                <x:Boolean x:Key="IsPinned">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:ForEachFileX>
-          <ui:WriteTextFile File="{x:Null}" Output="{x:Null}" DisplayName="Write Text To Output File" FileName="[FileName]" sap:VirtualizedContainerService.HintSize="452,57.333333333333336" sap2010:WorkflowViewState.IdRef="WriteTextFile_3" Text="[Output]">
+          <ui:WriteTextFile File="{x:Null}" Output="{x:Null}" DisplayName="Write Text To Output File" FileName="[FileName]" sap:VirtualizedContainerService.HintSize="484,57.333333333333336" sap2010:WorkflowViewState.IdRef="WriteTextFile_3" Text="[Output]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -706,7 +705,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </ui:WriteTextFile>
-          <ui:LogMessage DisplayName="Log Message Completion" sap:VirtualizedContainerService.HintSize="452,48" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Sucessfully added all extracted texts to file: &quot; +FileName]">
+          <ui:LogMessage DisplayName="Log Message Completion" sap:VirtualizedContainerService.HintSize="484,48" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[&quot;Sucessfully added all extracted texts to file: &quot; +FileName]">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -722,19 +721,19 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Catch" sap:VirtualizedContainerService.HintSize="486,227.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_15">
+            <Sequence DisplayName="Catch" sap:VirtualizedContainerService.HintSize="518,227.33333333333334" sap2010:WorkflowViewState.IdRef="Sequence_15">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:LogMessage DisplayName="Log Message Exception" sap:VirtualizedContainerService.HintSize="452,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Info" Message="[&quot;Scanned Receipts OCR Failed : &quot; +Environment.NewLine +&#xD;&#xA;&quot;Exception Source - &quot; +exception.Source +Environment.NewLine +&#xD;&#xA;&quot;Exception Message - &quot; +exception.Message]" />
+              <ui:LogMessage DisplayName="Log Message Exception" sap:VirtualizedContainerService.HintSize="484,167.33333333333334" sap2010:WorkflowViewState.IdRef="LogMessage_17" Level="Info" Message="[&quot;Scanned Receipts OCR Failed : &quot; +Environment.NewLine +&#xA;&quot;Exception Source - &quot; +exception.Source +Environment.NewLine +&#xA;&quot;Exception Message - &quot; +exception.Message]" />
             </Sequence>
           </ActivityAction>
         </Catch>
       </TryCatch.Catches>
       <TryCatch.Finally>
-        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="486,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_16">
+        <Sequence DisplayName="Finally" sap:VirtualizedContainerService.HintSize="518,90.66666666666667" sap2010:WorkflowViewState.IdRef="Sequence_16">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">False</x:Boolean>
