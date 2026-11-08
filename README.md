@@ -40,6 +40,9 @@ fields. The extracted information is saved into `.txt` files.
 -   Using Regex to identify and capture specific data fields.
 -   Publishing and running an attended automation with UiPath.
 
+### Extracted Output
+(MyOutput 2026-11-03.txt)
+
 ## Demo
 
 A demo video is available in the project portfolio.
