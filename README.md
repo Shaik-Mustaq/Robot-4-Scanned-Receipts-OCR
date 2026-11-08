@@ -41,7 +41,7 @@ fields. The extracted information is saved into `.txt` files.
 -   Publishing and running an attended automation with UiPath.
 
 ### Extracted Output
-(MyOutput 2026-11-03.txt)
+![Text Output](<TextOutput.png>)
 
 ## Demo
 
